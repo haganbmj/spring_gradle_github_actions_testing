@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'groovy'
+    id 'org.springframework.boot' version '2.3.2.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+
+    testImplementation 'org.codehaus.groovy:groovy-all:2.5.10'
+    testImplementation 'org.spockframework:spock-spring:1.3-groovy-2.5'
+    testImplementation 'org.spockframework:spock-core:1.3-groovy-2.5'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
