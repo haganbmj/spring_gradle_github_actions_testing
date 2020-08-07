@@ -10,4 +10,10 @@ jobs:
     - uses: actions/setup-java@v1
       with:
         java-version: 11
-    - run: ./gradlew build
+    - name: gradlew build
+      run: ./gradlew build
+    - uses: actions/upload-artifact@v2
+      if: ${{ always() }}
+      with:
+        name: reports
+        path: build/reports
